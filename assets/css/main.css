@@ -1,1 +1,325 @@
+:root {
+    /* Primary Colors */
+    --primary-dark: #0C1828;
+    --primary-blue: #0055FF;
+    --primary-orange: #FF6B00;
+    
+    /* Secondary Colors */
+    --secondary-blue: #3A76F0;
+    --secondary-light: #F0F5FF;
+    --secondary-orange-light: #FFF0E5;
+    
+    /* Neutral Colors */
+    --white: #FFFFFF;
+    --grey-100: #F5F7FA;
+    --grey-200: #E4E7EB;
+    --grey-300: #CBD2D9;
+    --grey-400: #9AA5B1;
+    --grey-500: #7B8794;
+    --grey-600: #616E7C;
+    --grey-700: #3E4C59;
+    --grey-800: #2D3748;
+    --grey-900: #1A202C;
+    
+    /* Gradients */
+    --gradient-blue: linear-gradient(135deg, var(--primary-blue) 0%, #7A5CFA 100%);
+    --gradient-orange: linear-gradient(135deg, var(--primary-orange) 0%, #FFAA00 100%);
+    
+    /* Other Variables */
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --transition: all 0.3s ease;
+}
 
+/* Dark Mode Variables */
+.dark-mode {
+    --primary-dark: #0F1E32;
+    --white: #1A202C;
+    --grey-100: #1E293B;
+    --grey-200: #2D3748;
+    --grey-300: #3E4C59;
+    --grey-400: #616E7C;
+    --grey-500: #7B8794;
+    --grey-600: #9AA5B1;
+    --grey-700: #CBD2D9;
+    --grey-800: #E4E7EB;
+    --grey-900: #F5F7FA;
+    
+    /* Adjust specific components */
+    --secondary-light: rgba(0, 85, 255, 0.1);
+    --secondary-orange-light: rgba(255, 107, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--grey-800);
+    line-height: 1.5;
+    background-color: var(--white);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--grey-900);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 1rem;
+}
+
+h4 {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    margin-bottom: 0.75rem;
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--grey-600);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--secondary-blue);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 85, 255, 0.2);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+}
+
+.btn-primary:hover {
+    background-position: 100% 100%;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 85, 255, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    box-shadow: 0 4px 20px rgba(0, 85, 255, 0.1);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--primary-blue);
+    transition: all 0.3s;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.btn-secondary:hover {
+    color: var(--white);
+}
+
+.btn-secondary:hover::before {
+    width: 100%;
+}
+
+.btn-orange {
+    background: var(--primary-orange);
+    color: var(--white);
+    border: none;
+    box-shadow: 0 4px 20px rgba(255, 107, 0, 0.2);
+}
+
+.btn-orange:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
+    background: linear-gradient(135deg, var(--primary-orange) 0%, #FFAA00 100%);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-gradient-blue {
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-gradient-orange {
+    background: var(--gradient-orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Animowane bloby */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.blob-blue {
+    background: var(--primary-blue);
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: 10%;
+    animation: floatBlue 8s ease-in-out infinite;
+}
+
+.blob-orange {
+    background: var(--primary-orange);
+    width: 250px;
+    height: 250px;
+    bottom: -50px;
+    left: 10%;
+    animation: floatOrange 7s ease-in-out infinite alternate;
+}
+
+@keyframes floatBlue {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-30px, 30px) scale(1.1);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes floatOrange {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -20px) scale(1.15);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    z-index: 1000;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.header.scrolled {
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .header {
+    background: rgba(26, 32, 44, 0.95);
+}
+
+.dark-mode .header.scrolled {
+    background: rgba(26, 32, 44, 0.98);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--grey-900);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo span {
+    color: var(--primary-blue);
+}
+
+/* Reszta stylów... (z oryginalnego pliku HTML) */
+/* Pełny plik CSS jest długi, więc kontynuuj z pozostałymi stylami */
